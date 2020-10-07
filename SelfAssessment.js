@@ -3,10 +3,18 @@ function SelftAssessment(haveSymptoms, listSymptoms){
     this.listSymptoms = listSymptoms;
 }
 
-SelftAssessment.prototype.submitSelfAssessment(haveSymptoms, listSymptoms){
+SelftAssessment.submitSelfAssessment(haveSymptoms, listSymptoms);{
     console.log("submitSelfAssessment");
+    if(!haveSymptoms){
+        //sumit to database
+        console.log("no Symptoms");
+    }
+    else{
+        console.log("record symptoms");
+
+    }
 }
 
-SelftAssessment.prototype.addSymptoms(symptoms){
-    console.log("add symptoms")
+SelftAssessment.addSymptoms(symptoms);{
+    console.log("add symptoms");
 }

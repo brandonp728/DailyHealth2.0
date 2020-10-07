@@ -1,0 +1,23 @@
+{
+  "name": "dailyhealth2.0",
+  "version": "1.0.0",
+  "description": "Daily Health 2.0 COVID-19 contract tracing",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandonp728/DailyHealth2.0.git"
+  },
+  "author": "Paola Peralta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brandonp728/DailyHealth2.0/issues"
+  },
+  "homepage": "https://github.com/brandonp728/DailyHealth2.0#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
