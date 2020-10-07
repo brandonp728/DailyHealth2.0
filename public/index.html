@@ -9,13 +9,35 @@
 </head>
 
 <body>
+
+    <script>
+        console.log('script');
+        document.getElementById('start');
+        
+        const test =1.3;
+        const test2 = 5.5;
+        const data = {test, test2};
+        const options = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        };
+        fetch('/api', options).then(response => {
+            console.log(response);// to get the respose in nice text the function could be async and use await vid 2.3
+        });
+    </script>
     <div>
         <h1>Daily Health 2.0</h1>
     </div>
 
     <div class="Nav-bar">
         <a href="">Self Assessment</a>
+        <p id="start">content goes here</p>
     </div>
+
+    
     
 </body>
 
