@@ -25,6 +25,10 @@ body {
   display: flex;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .h-text-l {
   font-size: 5rem;
   padding: 0 0 0 1rem;
@@ -65,8 +69,8 @@ body {
   display: flex;
   flex-direction: column;
   border: solid black 1px;
-  width: 30rem;
-  height: 15rem;
+  width: 45rem;
+  height: 18rem;
   border-radius: 15px;
   text-align: center;
   padding: 1.5rem;
@@ -79,7 +83,7 @@ body {
 
 .login-feilds {
   flex-direction: column;
-  text-align: right;
+  text-align: left;
   padding: 1.5rem 5rem;
 }
 
@@ -89,9 +93,16 @@ body {
 }
 
 .login-button {
-  width: 6rem;
+  margin-top: 1.5rem;
+  width: 10rem;
+  height: 3rem;
   align-self: center;
+  border-radius: 10px;
   outline: none;
+  background-color: rgb(230, 112, 2);
+  color: white;
+  border: none;
+  user-select: none;
 }
 
 .logout-button {
@@ -155,4 +166,61 @@ body {
   background-color: rgb(42, 42, 42);
   color: white;
   border: none;
+}
+.login-container1 {
+  display: flex;
+  flex-direction: column;
+  border: solid black 1px;
+  width: 30rem;
+  height: auto;
+  border-radius: 20px;
+  text-align: left;
+  padding: 2rem;
+  background-color: white;
+}
+
+.assessment-button1 {
+  margin-top: 1.5rem;
+  width: 10rem;
+  height: 3rem;
+  align-self: center;
+  border-radius: 10px;
+  outline: none;
+  background-color: rgb(230, 112, 2);
+  color: white;
+  border: none;
+  user-select: none;
+}
+
+.login-container2 {
+  display: flex;
+  flex-direction: column;
+  border: solid black 1px;
+  width: 45rem;
+  height: 25rem;
+  border-radius: 20px;
+  text-align: left;
+  padding: 2rem;
+  background-color: white;
+}
+.login-container3 {
+  display: flex;
+  flex-direction: column;
+  border: solid black 1px;
+  width: 25rem;
+  height: 31.5rem;
+  border-radius: 20px;
+  text-align: left;
+  padding: 2rem;
+  background-color: white;
+}
+
+.eventOptions {
+  width: 17rem;
+}
+
+.courseOptions {
+}
+
+.workOptions {
 }
