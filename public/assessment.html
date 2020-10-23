@@ -1,117 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Login</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
-  <title>Login</title>
-</head>
-
-<body>
-  <script src="index.js"></script>
-  <div class="header">
-    <div class="sub-container">
-      <span class="h-text-l">RIT</span>
-      <div class="divider"></div>
-      <span class="h-text-m align-center">Rochester Insitute of Technology</span>
-    </div>
-
-    <div class="sub-container-2 align-center">
-      <div class="logout-container">
-        <span style="margin-right: 1rem">User Name</span>
-        <a href="./index.html"><button class="logout-button">Log Out</button></a>
+  <body>
+    <script src="index.js"></script>
+    <div class="header">
+      <div class="sub-container">
+        <span class="h-text-l">RIT</span>
+        <div class="divider"></div>
+        <span class="h-text-m align-center"
+          >Rochester Insitute of Technology</span
+        >
       </div>
-      <!-- <span class="directories align-center">Directories</span>     -->
-      <!-- <input class="search" type="text" name="" id="" placeholder="Search RIT"> -->
+
+      <div class="sub-container-2 align-center">
+        <div class="logout-container">
+          <span style="margin-right: 1rem">User Name</span>
+          <a href="./index.html"
+            ><button class="logout-button">Log Out</button></a
+          >
+        </div>
+        <!-- <span class="directories align-center">Directories</span>     -->
+        <!-- <input class="search" type="text" name="" id="" placeholder="Search RIT"> -->
+      </div>
     </div>
-<<<<<<< HEAD
-  </div>
-  <div class="sub-header">
-    <a href="./assessment.html"><button class="sub-header-button">Self Assessment</button></a>
-    <a href="./medical.html"><button class="sub-header-button">Medical History</button></a>
-    <a href="./activity.html"><button class="sub-header-button">Add Activity</button></a>
-    <a href="./notification.html"><button class="sub-header-button">Notification</button></a>
-  </div>
-  <div class="content">
-    <div class="assessment-content">
-      <form class="sendAssesmentForm" action="">
-        <input class="assesmentF" type="checkbox" id="taste" name="taste" value="taste">
-        <label for="taste"> Loss of sense of taste or smell.</label><br>
+    <div class="sub-header">
+      <a href="./assessment.html"
+        ><button class="sub-header-button">Self Assessment</button></a
+      >
+      <a href="./medical.html"
+        ><button class="sub-header-button">Medical History</button></a
+      >
+      <a href="./activity.html"
+        ><button class="sub-header-button">Add Activity</button></a
+      >
+      <a href="./notification.html"
+        ><button class="sub-header-button">Notification</button></a
+      >
+    </div>
+    <div class="content">
+      <div class="assessment-content">
+        <form class="sendAssesmentForm" action="">
+          <input
+            class="assesmentF"
+            type="checkbox"
+            id="taste"
+            name="taste"
+            value="taste"
+          />
+          <label for="taste"> Loss of sense of taste or smell.</label><br />
 
-        <input class="assesmentF" type="checkbox" id="fever" name="fever" value="fever">
-        <label for="fever"> Chills or fever of 100F (37.8C) or higher.</label><br>
+          <input
+            class="assesmentF"
+            type="checkbox"
+            id="fever"
+            name="fever"
+            value="fever"
+          />
+          <label for="fever"> Chills or fever of 100F (37.8C) or higher.</label
+          ><br />
 
-        <input class="assesmentF" type="checkbox" id="throat" name="throat" value="throat">
-        <label for="throat"> Sore throat (not due to allergies).</label><br>
+          <input
+            class="assesmentF"
+            type="checkbox"
+            id="throat"
+            name="throat"
+            value="throat"
+          />
+          <label for="throat"> Sore throat (not due to allergies).</label><br />
 
-        <input class="assesmentF" type="checkbox" id="illness" name="illness" value="illness">
-        <label for="illness"> Feeling like coming down with an illness. (Ex. Fatigue or muscle aches)</label><br>
+          <input
+            class="assesmentF"
+            type="checkbox"
+            id="illness"
+            name="illness"
+            value="illness"
+          />
+          <label for="illness">
+            Feeling like coming down with an illness. (Ex. Fatigue or muscle
+            aches)</label
+          ><br />
 
-        <input class="assesmentF" type="checkbox" id="headache" name="headache" value="headache">
-        <label for="headache"> Unusual headache or eye pain.</label><br>
+          <input
+            class="assesmentF"
+            type="checkbox"
+            id="headache"
+            name="headache"
+            value="headache"
+          />
+          <label for="headache"> Unusual headache or eye pain.</label><br />
 
-        <input class="assesmentF" type="checkbox" id="cough" name="cough" value="cough">
-        <label for="cough"> New cough or change in your cough.</label><br>
+          <input
+            class="assesmentF"
+            type="checkbox"
+            id="cough"
+            name="cough"
+            value="cough"
+          />
+          <label for="cough"> New cough or change in your cough.</label><br />
 
-        <input class="assesmentF" type="checkbox" id="breathing" name="breathing" value="breathing">
-        <label for="breathing"> New or worsening shortness of breath (difficulty breathing).</label><br>
+          <input
+            class="assesmentF"
+            type="checkbox"
+            id="breathing"
+            name="breathing"
+            value="breathing"
+          />
+          <label for="breathing">
+            New or worsening shortness of breath (difficulty breathing).</label
+          ><br />
 
-        <input class="assesmentF" type="checkbox" id="others" name="others" value="others">
-        <label for="others"> Abdominal pain, nausea, vomiting, diarrhea or loss of appetite.</label><br>
+          <input
+            class="assesmentF"
+            type="checkbox"
+            id="others"
+            name="others"
+            value="others"
+          />
+          <label for="others">
+            Abdominal pain, nausea, vomiting, diarrhea or loss of
+            appetite.</label
+          ><br />
 
-        <input class="assesmentF" type="checkbox" id="contact" name="contact" value="contact">
-        <label for="contact"> Learned that you were COVID-19 positive or that you had contact with a confirmed case
-          in the last week.</label><br><br>
+          <input
+            class="assesmentF"
+            type="checkbox"
+            id="contact"
+            name="contact"
+            value="contact"
+          />
+          <label for="contact">
+            Learned that you were COVID-19 positive or that you had contact with
+            a confirmed case in the last week.</label
+          ><br /><br />
 
-        <input type="button" class="assessment-button" onclick="sendAssesment()" value="Submit">
+          <input
+            type="button"
+            class="assessment-button"
+            onclick="sendAssesment()"
+            value="Submit"
+          />
+        </form>
 
-      </form>
+        <script>
+          function sendAssesment() {
+            //   var y = document.querySelector('.assesmentF').checked;
+            //  // console.log(y);
+            //   var x = document.querySelector('.assesmentF:checked').value;
+            //   var checkedValue = null;
+            //   var inputElements = document.getElementsByClassName('assesmentF');
+            //   console.log(inputElements.length);
+            //   for(var j=0; inputElements.length; j++){
+            //     if (inputElements[i].checked ) {
+            //       checkedValue = inputElements[i].value;
+            //       console.log(checkedValue);
+            //       break;
+            //     }
+            //   }
+            //   for (var i = 0; inputElements[i]; ++i) {
+            //     console.log(inputElements[i].value);
+            //     if (inputElements[i].checked) {
+            //       checkedValue = inputElements[i].value;
+            //       break;
+            //     }
+            // }
+            //console.log(x);
+          }
+        </script>
 
-
-
-      <script>
-
-
-        function sendAssesment() {
-        //   var y = document.querySelector('.assesmentF').checked;
-        //  // console.log(y);
-        //   var x = document.querySelector('.assesmentF:checked').value;
-
-        //   var checkedValue = null;
-        //   var inputElements = document.getElementsByClassName('assesmentF');
-        //   console.log(inputElements.length);
-        //   for(var j=0; inputElements.length; j++){
-            
-        //     if (inputElements[i].checked ) {
-        //       checkedValue = inputElements[i].value;
-        //       console.log(checkedValue);
-        //       break;
-        //     }
-        //   }
-
-        //   for (var i = 0; inputElements[i]; ++i) {
-        //     console.log(inputElements[i].value);
-        //     if (inputElements[i].checked) {
-        //       checkedValue = inputElements[i].value;
-              
-        //       break;
-        //     }
-         // }
-          //console.log(x);
-        }
-      </script>
-
-
-      <!-- <div class="questions">
-=======
-    <center>
-      <br>
-      <div class="content1">
-          <div class="login-container2">
-<br>
-        <div class="questions">
->>>>>>> 0e7419fd4a5f4b9d539cf723ae68e7e3fa42905e
+        <!-- <div class="questions">
           <input type="checkbox" name="" id="" />
           <span>Loss of sense of smell and taste</span>
         </div>
@@ -161,22 +223,8 @@
         <br>
         <div class="flex align-center">
           <a><button class="assessment-button">Submit</button></a>
-<<<<<<< HEAD
         </div> -->
-    </div>
-  </div>
-</body>
-
-</html>
-=======
-  
-        </div>
       </div>
     </div>
-  </center>       
-    </div>
-      </div> 
-         
   </body>
 </html>
->>>>>>> 0e7419fd4a5f4b9d539cf723ae68e7e3fa42905e
