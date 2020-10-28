@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 
 var user;
@@ -35,26 +34,3 @@ var pass;
 // fetch('/api', options).then(response => {
 //     console.log(response);// to get the respose in nice text the function could be async and use await vid 2.3
 // });
-=======
-var currentDate = new Date().toISOString().slice(0, 10);
-document.getElementById("activityCalendar").min = currentDate;
-
-function showOptions(activityType) {
-  closeOpenOptions();
-  let option = document.getElementById(activityType);
-  if (option.hidden === true) {
-    option.hidden = false;
-  } else {
-    option.hidden = true;
-  }
-}
-
-function closeOpenOptions() {
-  let typeArray = [eventOptions, courseOptions, workOptions];
-  typeArray.forEach((type) => {
-    if (type.hidden === false) {
-      type.hidden = true;
-    }
-  });
-}
->>>>>>> 0e7419fd4a5f4b9d539cf723ae68e7e3fa42905e
