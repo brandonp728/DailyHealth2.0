@@ -1,3 +1,6 @@
+var has_symptoms = false;
+// let UserId = []
+
 var currentDate = new Date().toISOString().slice(0, 10);
 if (document.getElementById("activityCalendar")) {
   document.getElementById("activityCalendar").min = currentDate;
@@ -41,8 +44,34 @@ function sendAssesment() {
   let failedAssessment = Object.values(response).includes(true);
 
   console.log(listOfSymtoms);
+  console.log(has_symptoms);
+  console.log(localStorage.getItem("userId"));
   // console.log(response);
   // console.warn(response); // response sent to backend
+
+  /////send to backend
+  const timeElapsed = Date.now();
+  const today = new Date(timeElapsed);
+  const timeNow = today.toUTCString();
+  const credential ={
+    userId: localStorage.getItem("userId"),
+    date: timeNow,
+    haveSymptoms: has_symptoms,
+    listSymtoms: listOfSymtoms
+  }
+
+  const options = {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(credential)
+  };
+
+  fetch('/assessment', options);
+
+
+
 
   // Conditions to run when Backend response is returned
   // if (document.getElementById("no_symptoms").checked == true) {
@@ -62,7 +91,7 @@ function questionCheck(params) {
   }
 }
 
-var has_symptoms = false;
+
 function symptomCheck() {
   if(has_symptoms===false){
      has_symptoms = true;
@@ -121,6 +150,9 @@ async function myFunction() {
   
   const callback = await resp.json();
   if(callback.status == true){
+    // UserId.push(callback.userId);
+    // console.log(UserId[0]);
+    localStorage.setItem("userId",callback.userId);
     location.replace("http://localhost:3000/home.html")
   }
   else{

@@ -37,36 +37,18 @@ app.post('/login', (request, response) => {
   // console.log(user);
 
   const db = check(user, pass).then(arr => {
+    console.log("response from check: "+ arr);
 
     const auxResponse = aux.pop();
+    console.log("status: "+auxResponse.status)
+    console.log("userId "+ auxResponse.userId);
     console.log("db response: " + auxResponse);
     response.json({
-      status: auxResponse,
-      send: "paola"
+      status: auxResponse.status,
+      userId: auxResponse.userId
     })
   });
-  // console.log("database: " + loginStatus)
-
-  // response.json({
-  //   status: aux[0]
-  // });
-
-
-
-  // let conn;
-  // try {
-  // conn = await pool.getConnection();
-  // // const rows = await conn.query("SELECT 1 as val");
-  // // console.log(rows); //[ {val: 1}, meta: ... ]
-  // const res = await conn.query("INSERT INTO Account value (?, ?, ?)", [1000, user, pass]);
-  // console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
-
-  // } catch (err) {
-  // throw err;
-  // } finally {
-  // if (conn) return conn.end();
-  // }
-  // response.json({ test: 123 });
+ 
 
 });
 
@@ -79,45 +61,31 @@ const dbcredentials = {
 }
 let aux = []
 const check = async function login(user, pass) {
-  // const select = "SELECT Id FROM Account where Email='"+user+"' AND Password='"+pass+"'";
-  // mariadb.createConnection(dbcredentials)
-  //   .then(conn => {
-  //     conn.query(select)
-  //       .then(rows => {
-  //         console.log("rows ");
-  //         console.log(rows); // [{ "1": 1 }]
-  //         conn.end();
-  //         return rows;
-  //       })
-  //       .catch(err => { 
-  //         //handle query error
-  //       });
-  //   })
-  //   .catch(err => {
-  //     //handle connection error
-  //     console.log("error conecting to the database")
-  //   });
-
-
-
-
+  
   //working login
   let conn;
   try {
     conn = await pool.getConnection();
     const select = "SELECT Id FROM Account where Email='" + user + "' AND Password='" + pass + "'";
     const rows = await conn.query(select);
-    // console.log(rows); //[ {val: 1}, meta: ... ]
-    // const res = await conn.query("INSERT INTO Account (Id, Email, Password) value (?, ?, ?)", [1000, user, pass]);
-    // console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
-
+    
     try {
       if (typeof rows[0].Id !== "undefined") {
-        aux.push(true);
+        const varId = rows[0].Id;
+        const output = {
+          status : true,
+          userId : varId
+        }
+        // aux.push(true);
+        aux.push(output);
         console.log("has id of: " + rows[0].Id);
       }
     } catch (err) {
-      aux.push(false);
+      const output = {
+        status : false,
+        userId : 0
+      }
+      aux.push(output);
       console.log("Credentials invalid")
     }
 
@@ -131,6 +99,8 @@ const check = async function login(user, pass) {
   } finally {
     if (conn) return conn.end();
   }
+
+  return rows[0].Id;
 
 }
 
