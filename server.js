@@ -39,7 +39,6 @@ app.post("/submitNotifications", (request, response) => {
 //   res.writeHead(200, {'Content-Type': 'text/html'});
 //   res.end('Hello World!');
 // }).listen(8080);
-<<<<<<< HEAD
 
 app.post('/login', (request, response) => {
   const data = request.body;
@@ -167,5 +166,3 @@ const check = async function login(user, pass) {
 // });
 
 
-=======
->>>>>>> b77a9fb22774c9927d26efbe50ba5085d53bdf89
