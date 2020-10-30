@@ -21,28 +21,37 @@ function closeOpenOptions() {
     }
   });
 }
+
 function sendAssesment() {
   let response = {};
-  let inputs = document
-    .getElementById("questions")
-    .getElementsByTagName("input");
+  // let inputs = document
+  //   .getElementById("questions")
+  //   .getElementsByTagName("input");
+  let inputs = document.getElementsByClassName("checkbox");
 
+  var listOfSymtoms = "";
   [...inputs].forEach((element) => {
     response[element.id] = element.checked;
+    if(element.checked){
+      listOfSymtoms = listOfSymtoms+element.id+" | "
+
+    }
   });
 
   let failedAssessment = Object.values(response).includes(true);
 
-  console.warn(response); // response sent to backend
+  console.log(listOfSymtoms);
+  // console.log(response);
+  // console.warn(response); // response sent to backend
 
   // Conditions to run when Backend response is returned
-  if (document.getElementById("no_symptoms").checked == true) {
-    window.location.href = "./Greencard.html";
-  } else if (failedAssessment) {
-    window.location.href = "./Redcard.html";
-  } else {
-    alert("No Items are selected");
-  }
+  // if (document.getElementById("no_symptoms").checked == true) {
+  //   window.location.href = "./Greencard.html";
+  // } else if (failedAssessment) {
+  //   window.location.href = "./Redcard.html";
+  // } else {
+  //   alert("No Items are selected");
+  // }
 }
 
 function questionCheck(params) {
@@ -53,14 +62,21 @@ function questionCheck(params) {
   }
 }
 
+var has_symptoms = false;
 function symptomCheck() {
+  if(has_symptoms===false){
+     has_symptoms = true;
+  }else{
+    has_symptoms = false;
+  }
+  console.log(has_symptoms);
   let inputs = document
     .getElementById("questions")
     .getElementsByTagName("input");
 
   if (document.getElementById("no_symptoms").checked === true) {
     [...inputs].forEach((element) => {
-      element.checked = false;
+      element.checked = false;//remove this and they stay checked?
       element.disabled = true;
     });
   } else {
@@ -114,9 +130,9 @@ async function myFunction() {
 
 }
 
-function sendAssesment() {
-  console.log("hello");
-}
+// function sendAssesment() {
+//   console.log("hello");
+// }
 
 // const test = 1.3;
 

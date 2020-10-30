@@ -7,6 +7,7 @@
     <title>Login</title>
   </head>
   <body>
+
     <script defer src="index.js"></script> 
     <div class="header">
       <div class="sub-container">
@@ -28,6 +29,7 @@
         <!-- <input class="search" type="text" name="" id="" placeholder="Search RIT"> -->
       </div>
     </div>
+
     <div class="sub-header">
       <a href="./assessment.html"
         ><button class="sub-header-button">Self Assessment</button></a
@@ -54,45 +56,52 @@
             </div>
           <div id="questions">
             <div class="questions">
-              <input class="checkbox" type="checkbox" name="Go" id="question1" onclick="questionCheck('question1')"/>
+              
+              <input class="checkbox" type="checkbox" name="taste" id="taste" onclick="questionCheck('taste')"/>
               <span>Loss of sense of smell and taste</span>
             </div>
+
             <div class="questions">
-              <input class="checkbox" type="checkbox" name="Go" id="question2" onclick="questionCheck('question2')"/>
+              <input class="checkbox" type="checkbox" name="fever" id="fever" onclick="questionCheck('fever')"/>
               <span>Chills or faver of 100F (37.8c) or higher</span>
             </div>
             <div class="questions">
-              <input class="checkbox" type="checkbox" name="Go" id="question3" onclick="questionCheck('question3')"/>
+              <input class="checkbox" type="checkbox" name="throat" id="throat" onclick="questionCheck('throat')"/>
               <span>Sore throat(not due to allergies)</span>
             </div>
             <div class="questions">
-              <input class="checkbox" type="checkbox" name="Go" id="question4" onclick="questionCheck('question4')"/>
+              <input class="checkbox" type="checkbox" name="illness" id="illness" onclick="questionCheck('illness')"/>
               <span >Feeling like coming down with an illness. (Ex. Fatigue or muscle
                 aches)</span
               >
             </div>
             <div class="questions">
-              <input class="checkbox" type="checkbox" name="Go" id="question5" onclick="questionCheck('question5')"/>
-              <span>Unusual hadach or eye pain</span>
+              <input class="checkbox" type="checkbox" name="headache" id="headache" onclick="questionCheck('headache')"/>
+              <span>Unusual headache or eye pain</span>
             </div>
+
             <div class="questions">
-              <input class="checkbox" type="checkbox" name="Go" id="question6" onclick="questionCheck('question6')"/>
+              <input class="checkbox" type="checkbox" name="cough" id="cough" onclick="questionCheck('cough')"/>
               <span>New cough or chage in your cough</span>
             </div>
+
             <div class="questions">
-              <input class="checkbox" type="checkbox" name="Go" id="question7" onclick="questionCheck('question7')"/>
+              <input class="checkbox" type="checkbox" name="breathing" id="breathing" onclick="questionCheck('breathing')"/>
               <span >New or worsening shortness of breath (difficulty breathing)</span>
             </div>
+
             <div class="questions">
-              <input class="checkbox" type="checkbox" name="Go" id="question8" onclick="questionCheck('question8')"/>
+              <input class="checkbox" type="checkbox" name="others" id="others" onclick="questionCheck('others')"/>
               <span >Abdominal pain, nausea, vomiting, diarrhea or loss of appetite</span >
             </div>
+
             <div class="questions">
-              <input class="checkbox" type="checkbox" name="Go" id="question9" onclick="questionCheck('question9')"/>
+              <input class="checkbox" type="checkbox" name="contact" id="contact" onclick="questionCheck('contact')"/>
               <span >Learned that you were COVID-19 positive or that you have contact with a confirmed case in the last week</span>
             </div>
           </div>
         </br>
+
         <div class="questions">
           <input class="checkbox" type="checkbox" name="no_symptoms" id="no_symptoms" onclick="symptomCheck()"/>
           <span > If you do not have any of these symptoms, click here  </span>
