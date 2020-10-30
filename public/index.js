@@ -1,5 +1,7 @@
 var currentDate = new Date().toISOString().slice(0, 10);
-document.getElementById("activityCalendar").min = currentDate;
+if (document.getElementById("activityCalendar")) {
+  document.getElementById("activityCalendar").min = currentDate;
+}
 
 function showOptions(activityType) {
   closeOpenOptions();
@@ -19,18 +21,28 @@ function closeOpenOptions() {
     }
   });
 }
-function redirect() {
-  let q1 = document.getElementById("question1").checked;
-  let q2 = document.getElementById("question2").checked;
+function sendAssesment() {
+  let response = {};
+  let inputs = document
+    .getElementById("questions")
+    .getElementsByTagName("input");
 
-  let failed = q1 || q2;
+  [...inputs].forEach((element) => {
+    response[element.id] = element.checked;
+  });
 
-  console.warn(q1, q2);
+  let failedAssessment = Object.values(response).includes(true);
 
-  if (document.getElementById("no_symptoms").checked == true)
+  console.warn(response); // response sent to backend
+
+  // Conditions to run when Backend response is returned
+  if (document.getElementById("no_symptoms").checked == true) {
     window.location.href = "./Greencard.html";
-  else if (failed) window.location.href = "./Redcard.html";
-  else alert("No Items are selected");
+  } else if (failedAssessment) {
+    window.location.href = "./Redcard.html";
+  } else {
+    alert("No Items are selected");
+  }
 }
 
 function questionCheck(params) {
