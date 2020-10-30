@@ -1,33 +1,45 @@
-const { request, response } = require('express');
-const express = require('express');
-const mariadb = require('mariadb');
+const express = require("express");
 const app = express();
 
 app.listen(3000, () => console.log("Listening at 3000"));
-app.use(express.static('public'));
-app.use(express.json({ limit: '1mb' }));//this is to receive json data
+app.use(express.static("public"));
+app.use(express.json({ limit: "1mb" }));
 
-
-const pool = mariadb.createPool({
-  host: 'dailyhealthdb.ccmgc85klflk.us-east-1.rds.amazonaws.com',
-  user: 'admin',
-  password: 'password!',
-  database: 'dailyhealthdb'
-  //  connectionLimit: 5
-});
-
-app.post('/api', (request, response) => {
+app.post("/api", (request, response) => {
   console.log(request.body);
   response.json({
-    status: 'successPaola'
+    status: "successPaola",
   });
 });
+
+app.post("/submitAssesment", (request, response) => {
+  console.log(request.body);
+  response.json({
+    status: "successPaola",
+  });
+});
+
+app.post("/submitActivity", (request, response) => {
+  console.log(request.body);
+  response.json({
+    status: "successPaola",
+  });
+});
+
+app.post("/submitNotifications", (request, response) => {
+  console.log(request.body);
+  response.json({
+    status: "successPaola",
+  });
+});
+
 // var http = require('http');
 
 // http.createServer(function (req, res) {
 //   res.writeHead(200, {'Content-Type': 'text/html'});
 //   res.end('Hello World!');
 // }).listen(8080);
+<<<<<<< HEAD
 
 app.post('/login', (request, response) => {
   const data = request.body;
@@ -155,3 +167,5 @@ const check = async function login(user, pass) {
 // });
 
 
+=======
+>>>>>>> b77a9fb22774c9927d26efbe50ba5085d53bdf89
