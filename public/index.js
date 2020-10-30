@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 630729102c37985ee5e9dc93e9cacb97e9776256
 var user;
 var pass;
 function myFunction() {
