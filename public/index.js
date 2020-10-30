@@ -69,25 +69,57 @@ function symptomCheck() {
     });
   }
 }
-
+///////////////////////////////////////////////////////////////////////////////
 var user;
 var pass;
-function myFunction() {
+async function myFunction() {
   user = document.getElementById("username").value;
-  console.log(user);
+ 
   pass = document.getElementById("password").value;
-  console.log(pass);
+  
 
   if (pass == "" || user == "") {
     alert("Username and password must be filled out");
     return false;
   }
+
+  credential = {
+    username: user,
+    password: pass
+  }
+
+  //pass to server to check in database
+  // const response = await fetch('/login' );
+  // const myresponse = await response.json();
+  // console.log(myresponse);
+
+  const options = {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(credential)
+  };
+
+  const resp = await fetch('/login', options);
+  
+  const callback = await resp.json();
+  if(callback.status == true){
+    location.replace("http://localhost:3000/home.html")
+  }
+  else{
+    alert("Username or Password no valid");
+  }
+  // console.log(callback);
+
 }
 
-// function sendAssesment() {
-//   console.log("hello");
-// }
+function sendAssesment() {
+  console.log("hello");
+}
+
 // const test = 1.3;
+
 
 // const test2 = 5.5;
 // const data = { user, test2 };
