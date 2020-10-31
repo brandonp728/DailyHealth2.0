@@ -37,17 +37,49 @@ app.post('/login', (request, response) => {
   // console.log(user);
 
   const db = check(user, pass).then(arr => {
-    console.log("response from check: "+ arr);
 
     const auxResponse = aux.pop();
     console.log("status: "+auxResponse.status)
     console.log("userId "+ auxResponse.userId);
-    console.log("db response: " + auxResponse);
     response.json({
       status: auxResponse.status,
       userId: auxResponse.userId
     })
   });
+ 
+
+});
+
+app.post('/assessment', (request, response) => {
+  const data = request.body;
+  const user = data.userId;
+  const date = data.date;
+  const hasSymptoms = data.haveSymptoms;
+  const listSymtoms = data.listSymtoms;
+
+  // console.log(user);
+
+  const assess = assessment(user, date, hasSymptoms, listSymtoms).then(arr=>{
+      response.json({
+      status: true
+    })
+
+  }
+
+  );
+
+  // const db = check(user, pass).then(arr => {
+  //   console.log("response from check: "+ arr);
+
+  //   const auxResponse = aux.pop();
+  //   console.log("status: "+auxResponse.status)
+  //   console.log("userId "+ auxResponse.userId);
+  //   console.log("db response: " + auxResponse);
+  //   response.json({
+  //     status: auxResponse.status,
+  //     userId: auxResponse.userId
+  //   })
+  // });
  
 
 });
@@ -60,6 +92,31 @@ const dbcredentials = {
   //  connectionLimit: 5
 }
 let aux = []
+
+async function assessment(user, date, hasSymptoms, listSymtoms){
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    // const select = "INSERT INTO myTable value (?, ?)"
+    // const rows = await conn.query(select);
+    	const res = await conn.query("INSERT INTO assessment value (?, ?, ?, ?)", [user, date, hasSymptoms, listSymtoms]);
+	    console.log(res); 
+
+  } catch (err) {
+    console.log(err);
+    throw err;
+
+  } finally {
+    if (conn) return conn.end();
+  }
+
+  return rows[0].Id;
+
+}
+
+
+
+
 const check = async function login(user, pass) {
   
   //working login

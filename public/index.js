@@ -50,9 +50,48 @@ function sendAssesment() {
   // console.warn(response); // response sent to backend
 
   /////send to backend
+  // const timeElapsed = Date.now();
+  // const today = new Date(timeElapsed);
+  // const timeNow = today.toUTCString();
+
+  // const credential ={
+  //   userId: localStorage.getItem("userId"),
+  //   date: timeNow,
+  //   haveSymptoms: has_symptoms,
+  //   listSymtoms: listOfSymtoms
+  // }
+
+  // const options = {
+  //   method: 'POST',
+  //   headers: {
+  //     "Content-Type": "application/json"
+  //   },
+  //   body: JSON.stringify(credential)
+  // };
+
+  // fetch('/assessment', options);
+
+
+
+  // Conditions to run when Backend response is returned
+  if (document.getElementById("no_symptoms").checked == true) {
+    sendSelftAssessment(has_symptoms, listOfSymtoms);
+    console.log("sent");
+    window.location.href = "./Greencard.html";
+  } else if (failedAssessment) {
+    sendSelftAssessment(has_symptoms, listOfSymtoms);
+    console.log("sent2");
+    window.location.href = "./Redcard.html";
+  } else {
+    alert("No Items are selected");
+  }
+}
+
+function sendSelftAssessment(has_symptoms, listOfSymtoms){
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
   const timeNow = today.toUTCString();
+
   const credential ={
     userId: localStorage.getItem("userId"),
     date: timeNow,
@@ -70,17 +109,6 @@ function sendAssesment() {
 
   fetch('/assessment', options);
 
-
-
-
-  // Conditions to run when Backend response is returned
-  // if (document.getElementById("no_symptoms").checked == true) {
-  //   window.location.href = "./Greencard.html";
-  // } else if (failedAssessment) {
-  //   window.location.href = "./Redcard.html";
-  // } else {
-  //   alert("No Items are selected");
-  // }
 }
 
 function questionCheck(params) {
