@@ -25,6 +25,9 @@ function closeOpenOptions() {
   });
 }
 
+
+
+/////////////////////////////////////////////////////////////////////////
 function sendAssesment() {
   let response = {};
   // let inputs = document
@@ -142,6 +145,85 @@ function symptomCheck() {
     });
   }
 }
+////////////////////////add activity///////////////
+function addActivity(){
+  var allCheck = true;
+  
+  var event = document.getElementById('Event').checked;
+  var course = document.getElementById('Course').checked;
+  var work = document.getElementById('Work').checked;
+
+  var isOnlineNo = document.getElementById('No').checked;
+  var isOnlineYes = document.getElementById('Yes').checked;
+  var activityType
+  var eventName = ""
+  var timeStart = ""
+  var timeEnd = ""
+
+  // console.log('event'+event+'course'+course+"work"+work+""+isOnlineYes+""+isOnlineNo);
+  // (event===true || course===true || work===true) &&
+
+  if((event===false && course===false && work===false) ){
+    // alert("Check all fields before submitting");
+    allCheck = false;
+  }
+  if((isOnlineNo===false && isOnlineYes===false)){
+    allCheck = false;
+  }
+  if(event===true){
+    
+    activityType='event'
+    eventName = document.getElementById('inputValueEvent').value;
+    timeStart = document.getElementById('activityCalendar').value;
+    timeEnd = document.getElementById('timeEndEvent').value;
+    
+
+  }
+  if(course===true){
+    eventName = document.getElementById('inputValueCourse').value;
+    // timeStart = document.getElementById('activityCalendar').value;
+    // timeEnd = document.getElementById('timeEndCourse').value;
+    activityType='course'
+    console.log(activityType);
+  }
+  if(work===true){
+    eventName = document.getElementById('inputValueWork').value;
+    // timeStart = document.getElementById('activityCalendar').value;
+    // timeEnd = document.getElementById('timeEndWork').value;
+    activityType='work'
+    console.log(activityType)
+  }
+
+  if(eventName === ""){
+    allCheck = false;
+  }
+
+  
+  // console.log(eventName+""+timeStart+""+timeEnd);
+  if(allCheck===false){
+    alert("Check all fields before submitting");
+  }
+  else{
+    
+    var isOnline
+    if(isOnlineYes===false){
+      isOnline = false;
+    }
+    else{
+      isOnline = true;
+    }
+    
+    addActivityData={
+      activityType: activityType,
+      isOnline: isOnline,
+      activityId: eventName,
+      timeStart: timeStart,
+      timeEnd: timeEnd
+    }
+  }
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 var user;
 var pass;

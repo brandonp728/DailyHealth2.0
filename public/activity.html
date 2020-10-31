@@ -57,6 +57,7 @@
         <input type="radio" id="Work" name="activityType" value="Work" onclick="showOptions('workOptions')">
         <label for="Work">Work</label>
     </form> 
+
 </form> 
 <h2> Online Activity</h2>
 <form>
@@ -72,15 +73,15 @@
         <form action="/action_page.php" class="flex flex-col">
             <div class="my-2">
                 <label for="Event"><b>Event Name:</b></label>
-                <input type="text">                 
+                <input id="inputValueEvent" type="text">                 
             </div>
             <div class="my-2"> 
-                <label for="Time"><b>Time Start:</b></label>
-                <input type="date" id="activityCalendar" name="Time" required autocomplete="off" max="2050-12-31">                
+                <label for="Time"><b>Date of Event:</b></label>
+                <input type="date" class="timeStartEvent" id="activityCalendar" name="Time" required autocomplete="off" max="2050-12-31">                
             </div>
             <div class="my-2">
-                <label for="Time"><b>Time End:</b></label>
-                <input type="time" name="Time" required autocomplete="off">                
+                <label for="Time"><b>Time Scheduled:</b></label>
+                <input type="time" id="timeEndEvent" name="Time" required autocomplete="off">                
             </div>      
         </form>
     </div>
@@ -90,20 +91,20 @@
         <form action="/action_page.php" class="flex flex-col">
             <div class="my-2">
                 <label for="Event"><b>Course Id:</b></label>
-                <input type="text">                 
+                <input id="inputValueCourse" type="text">                 
             </div>
-            <div class="my-2">
+            <!-- <div class="my-2">
                 <label for="Event"><b>Department:</b></label>
-                <input type="text">                 
-            </div>  
-            <div class="my-2"> 
+                <input class="inputValueCourse" type="text">                 
+            </div>   -->
+            <!-- <div class="my-2"> 
                 <label for="Time"><b>Time Start:</b></label>
-                <input type="date" id="activityCalendar" name="Time" required autocomplete="off" max="2050-12-31">                
-            </div>
-            <div class="my-2">
-                <label for="Time"><b>Time End:</b></label>
-                <input type="time" name="Time" required autocomplete="off">                
-            </div>     
+                <input type="date" class="timeStartCourse" id="activityCalendar" name="Time" required autocomplete="off" max="2050-12-31">                
+            </div> -->
+            <!-- <div class="my-2">
+                <label for="Time"><b>Time Scheduled:</b></label>
+                <input type="time" id="timeEndCourse" name="Time" required autocomplete="off">                
+            </div>      -->
         </form>
     </div>
 </div>
@@ -112,16 +113,16 @@
         <form action="/action_page.php" class="flex flex-col">
             <div class="my-2">
                 <label for="Event"><b>Place of Work:</b></label>
-                <input type="text">                 
+                <input id="inputValueWork" type="text">                 
             </div>
-            <div class="my-2"> 
+            <!-- <div class="my-2"> 
                 <label for="Time"><b>Time Start:</b></label>
-                <input type="date" id="activityCalendar" name="Time" required autocomplete="off" max="2050-12-31">                
-            </div>
-            <div class="my-2">
+                <input type="date" class="timeStartWork" id="activityCalendar" name="Time" required autocomplete="off" max="2050-12-31">                
+            </div> -->
+            <!-- <div class="my-2">
                 <label for="Time"><b>Time End:</b></label>
-                <input type="time" name="Time" required autocomplete="off">                
-            </div>
+                <input type="time" id="timeEndWork" name="Time" required autocomplete="off">                
+            </div> -->
       
         </form>
     </div>
@@ -130,9 +131,10 @@
 
 
 <center>
-        <a href="./notification.html"
+        <!-- <a href="./notification.html"
           ><button class="assessment-button1">Submit</button></a
-        >
+        > -->
+        <button type="button" class="assessment-button1" onclick="addActivity()">Submit</button>
 </center>
       </div>
     </div>
