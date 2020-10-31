@@ -27,7 +27,7 @@ function closeOpenOptions() {
 
 
 
-/////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////// Assessment
 function sendAssesment() {
   let response = {};
   // let inputs = document
@@ -113,7 +113,7 @@ function sendSelftAssessment(has_symptoms, listOfSymtoms){
   fetch('/assessment', options);
 
 }
-
+///////////////////////////////////////////////////////////////////////////////////////////////
 function questionCheck(params) {
   if (document.getElementById(params).checked === true) {
     document.getElementById("no_symptoms").disabled = true;
@@ -214,15 +214,32 @@ function addActivity(){
     }
     
     addActivityData={
+      userId: localStorage.getItem("userId"),
       activityType: activityType,
       isOnline: isOnline,
       activityId: eventName,
       timeStart: timeStart,
       timeEnd: timeEnd
     }
+
+    sendActivity(addActivityData);
   }
 }
 
+
+function sendActivity(credential){
+
+  const options = {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(credential)
+  };
+
+  fetch('/activity', options);
+
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 var user;

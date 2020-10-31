@@ -46,8 +46,6 @@ app.post('/login', (request, response) => {
       userId: auxResponse.userId
     })
   });
- 
-
 });
 
 app.post('/assessment', (request, response) => {
@@ -63,25 +61,40 @@ app.post('/assessment', (request, response) => {
       response.json({
       status: true
     })
-
   }
-
   );
+});
 
-  // const db = check(user, pass).then(arr => {
-  //   console.log("response from check: "+ arr);
+/**
+ * addActivityData={
+ * userId
+      activityType: activityType,
+      isOnline: isOnline,
+      activityId: eventName,
+      timeStart: timeStart,
+      timeEnd: timeEnd
+    }
+ */
 
-  //   const auxResponse = aux.pop();
-  //   console.log("status: "+auxResponse.status)
-  //   console.log("userId "+ auxResponse.userId);
-  //   console.log("db response: " + auxResponse);
-  //   response.json({
-  //     status: auxResponse.status,
-  //     userId: auxResponse.userId
+app.post('/activity', (request, response) => {
+  const data = request.body;
+  const userId = data.userId;
+  const typeofactivity = data.activityType;
+  const online = data.isOnline;
+  const activityId = data.activityId;
+  const timeStart = data.timeStart;
+  const timeEnd = data.timeEnd;
+
+  console.log(data);
+  console.log("activity type "+typeofactivity);
+
+  //save in database and respond to client
+  // const assess = assessment(user, date, hasSymptoms, listSymtoms).then(arr=>{
+  //     response.json({
+  //     status: true
   //   })
-  // });
- 
-
+  // }
+  // );
 });
 
 const dbcredentials = {
