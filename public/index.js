@@ -49,41 +49,15 @@ function sendAssesment() {
   console.log(listOfSymtoms);
   console.log(has_symptoms);
   console.log(localStorage.getItem("userId"));
-  // console.log(response);
-  // console.warn(response); // response sent to backend
-
-  /////send to backend
-  // const timeElapsed = Date.now();
-  // const today = new Date(timeElapsed);
-  // const timeNow = today.toUTCString();
-
-  // const credential ={
-  //   userId: localStorage.getItem("userId"),
-  //   date: timeNow,
-  //   haveSymptoms: has_symptoms,
-  //   listSymtoms: listOfSymtoms
-  // }
-
-  // const options = {
-  //   method: 'POST',
-  //   headers: {
-  //     "Content-Type": "application/json"
-  //   },
-  //   body: JSON.stringify(credential)
-  // };
-
-  // fetch('/assessment', options);
-
-
-
+  
   // Conditions to run when Backend response is returned
   if (document.getElementById("no_symptoms").checked == true) {
     sendSelftAssessment(has_symptoms, listOfSymtoms);
-    console.log("sent");
+    
     window.location.href = "./Greencard.html";
   } else if (failedAssessment) {
     sendSelftAssessment(has_symptoms, listOfSymtoms);
-    console.log("sent2");
+    // call function to send notifications
     window.location.href = "./Redcard.html";
   } else {
     alert("No Items are selected");
@@ -113,6 +87,10 @@ function sendSelftAssessment(has_symptoms, listOfSymtoms){
   fetch('/assessment', options);
 
 }
+//////////////////////////////create notifications////////////////////////
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function questionCheck(params) {
   if (document.getElementById(params).checked === true) {
@@ -223,6 +201,8 @@ function addActivity(){
     }
 
     sendActivity(addActivityData);
+    alert("Activity added successfully");
+    location.replace("http://localhost:3000/home.html");
   }
 }
 

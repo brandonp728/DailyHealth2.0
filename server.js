@@ -89,12 +89,12 @@ app.post('/activity', (request, response) => {
   console.log("activity type "+typeofactivity);
 
   //save in database and respond to client
-  // const assess = assessment(user, date, hasSymptoms, listSymtoms).then(arr=>{
-  //     response.json({
-  //     status: true
-  //   })
-  // }
-  // );
+  const assess = addactivity(userId, typeofactivity, online, activityId, timeStart, timeEnd).then(arr=>{
+      response.json({
+      status: true
+    })
+  }
+  );
 });
 
 const dbcredentials = {
@@ -105,6 +105,25 @@ const dbcredentials = {
   //  connectionLimit: 5
 }
 let aux = []
+
+async function addactivity(userId, typeofactivity, online, activityId, timeStart, timeEnd){
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    // const select = "INSERT INTO myTable value (?, ?)"
+    // const rows = await conn.query(select);
+    	const res = await conn.query("INSERT INTO activity value (?, ?, ?, ?, ?, ?)", [userId, typeofactivity, online, activityId, timeStart, timeEnd]);
+	    console.log(res); 
+
+  } catch (err) {
+    console.log(err);
+    throw err;
+
+  } finally {
+    if (conn) return conn.end();
+  }
+
+}
 
 async function assessment(user, date, hasSymptoms, listSymtoms){
   let conn;
@@ -123,7 +142,7 @@ async function assessment(user, date, hasSymptoms, listSymtoms){
     if (conn) return conn.end();
   }
 
-  return rows[0].Id;
+  // return rows[0].Id;//what is this for? will comment
 
 }
 
