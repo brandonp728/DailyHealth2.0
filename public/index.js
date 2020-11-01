@@ -58,6 +58,7 @@ function sendAssesment() {
   } else if (failedAssessment) {
     sendSelftAssessment(has_symptoms, listOfSymtoms);
     // call function to send notifications
+    createNotification();
     window.location.href = "./Redcard.html";
   } else {
     alert("No Items are selected");
@@ -89,6 +90,33 @@ function sendSelftAssessment(has_symptoms, listOfSymtoms){
 }
 //////////////////////////////create notifications////////////////////////
 
+function createNotification(){
+  //get all the activities the user has been to
+      //SELECT activityId from activity where userId=id // return list of activities
+  //get all the users who have been to the same activities
+      //for each activity get list of users   select 
+  //create database table
+  //record new notification for all of these users
+
+  //notifications: userId, activityId, viewed, date, 
+  console.log("sending notification");
+
+  const credential ={
+    userId: localStorage.getItem("userId")
+  }
+
+  const options = {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(credential)
+  };
+
+  fetch('/notification', options);
+
+
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

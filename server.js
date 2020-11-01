@@ -97,6 +97,20 @@ app.post('/activity', (request, response) => {
   );
 });
 
+app.post('/notification', (request, response) => {
+  const data = request.body;
+  const userId = data.userId;
+
+  // console.log(user);
+  console.log("called create notification");
+
+  const notification = createNotification(userId).then(arr => {    
+    response.json({
+      status: true,
+    })
+  });
+});
+
 const dbcredentials = {
   host: 'dailyhealthdb.ccmgc85klflk.us-east-1.rds.amazonaws.com',
   user: 'admin',
@@ -190,6 +204,78 @@ const check = async function login(user, pass) {
   }
 
   return rows[0].Id;
+
+}
+
+////////////////////notification code//////////
+async function createNotification(userIdp){
+  console.log("in not function");
+  const timeElapsed = Date.now();
+  const today = new Date(timeElapsed);
+  const timeNow = today.toUTCString();
+
+
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const select = "SELECT activityId FROM activity where userId=" + userIdp ;//and is online=no
+    const rows = await conn.query(select);
+    console.log("in database conection: ");
+    for( i=0; i<rows.length; i++){
+        
+        const actName = rows[i].activityId;
+        const selectUsers = "SELECT userId FROM activity where activityId ='"+actName+"'";//and is online = no
+        const usersquery = await conn.query(selectUsers);
+        
+        // console.log(usersquery[0].userId);
+        for (j=0; j<usersquery.length; j++){
+          const currentUser = usersquery[j].userId;
+          const res = await conn.query("INSERT INTO notification value (?, ?, ?, ?)", [currentUser, actName, 0, timeNow]);
+          
+          console.log(res);
+          //if currentUser===userId = skip
+
+        }
+    }
+    // array.forEach(rows => {
+    //   console.log(rows);
+    //   console.log(rows.activityId);
+    // });
+    // console.log(rows[0].activityId);
+
+    
+    
+    // try {
+    //   if (typeof rows[0].Id !== "undefined") {
+    //     const varId = rows[0].Id;
+    //     const output = {
+    //       status : true,
+    //       userId : varId
+    //     }
+    //     // aux.push(true);
+    //     aux.push(output);
+    //     console.log("has id of: " + rows[0].Id);
+    //   }
+    // } catch (err) {
+    //   const output = {
+    //     status : false,
+    //     userId : 0
+    //   }
+    //   aux.push(output);
+    //   console.log("Credentials invalid")
+    // }
+
+    // console.log("array[0]: "+aux[0]);
+
+
+
+  } catch (err) {
+    console.log(err);
+    throw err;
+
+  } finally {
+    if (conn) return conn.end();
+  }
 
 }
 
