@@ -88,6 +88,40 @@ function sendSelftAssessment(has_symptoms, listOfSymtoms){
   fetch('/assessment', options);
 
 }
+
+//////////////////////////////medical history/////////////////////////////
+async function addMedicalHistory() {
+    let hashMap = {};
+    let inputs = document.getElementsByClassName("checkbox");
+    let other = document.getElementById("condition").value;
+    [...inputs].forEach((element) => {
+        hashMap[element.id] = element.checked;
+    });
+
+    console.log(hashMap);
+
+    const credential = {
+        userId: localStorage.getItem("userId"),
+        medicalHistory: hashMap,
+        other: other
+    };
+    
+    const options = {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(credential)
+    };
+    console.log(options);
+
+    const res = await fetch('/medical', options);
+    alert("Thank you for submitting your medical history!");
+    window.location.href = "./home.html";
+}
+
+//////////////////////////////////////////////////////////////////////////
+
 //////////////////////////////create notifications////////////////////////
 
 function createNotification(){

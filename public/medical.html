@@ -7,6 +7,7 @@
     <title>Login</title>
   </head>
   <body>
+    <script defer src="index.js"></script> 
     <div class="header">
       <div class="sub-container">
         <span class="h-text-l">RIT</span>
@@ -47,59 +48,59 @@
           <div class="login-container3">
 
         <div class="questions">
-          <input type="checkbox" name="" id="" />
+          <input class="checkbox" type="checkbox" name="diabetes" id="diabetes" />
           <span>Diabetes</span>
         </div>
         <div class="questions">
-          <input class="checkbox" type="checkbox" name="" id="" />
+          <input class="checkbox" type="checkbox" name="blood_pressure" id="high_blood_pressure" />
           <span> High blood pressure</span>
         </div>
         <div class="questions">
-          <input class="checkbox" type="checkbox" name="" id="" />
+          <input class="checkbox" type="checkbox" name="cholestrol" id="high_cholesterol" />
           <span>High cholesterol</span>
         </div>
         <div class="questions">
-          <input class="checkbox" type="checkbox" name="" id="" />
-          <span>Hypothyroidism)</span>
+          <input class="checkbox" type="checkbox" name="hypothyroidism" id="hypothyroidism" />
+          <span>Hypothyroidism</span>
         </div>
         <div class="questions">
-          <input class="checkbox" type="checkbox" name="" id="" />
+          <input class="checkbox" type="checkbox" name="cancer" id="cancer" />
           <span>Cancer </span>
         </div>
         <div class="questions">
-          <input class="checkbox" type="checkbox" name="" id="" />
+          <input class="checkbox" type="checkbox" name="epilepsy" id="epilepsy" />
           <span>Epilepsy</span>
         </div>
         <div class="questions">
-          <input class="checkbox" type="checkbox" name="" id="" />
+          <input class="checkbox" type="checkbox" name="asthma" id="asthma" />
           <span>Asthma</span>
         </div>
         <div class="questions">
-          <input class="checkbox" type="checkbox" name="" id="" />
+          <input class="checkbox" type="checkbox" name="heart_problems" id="heart_problems" />
           <span> Heart problems</span>
         </div>
         <div class="questions">
-          <input class="checkbox" type="checkbox" name="" id="" />
+          <input class="checkbox" type="checkbox" name="kidney_disease" id="kidney_disease" />
           <span>Kidney disease</span>
         </div>
         <div class="questions">
-          <input class="checkbox" type="checkbox" name="" id="" />
+          <input class="checkbox" type="checkbox" name="leukemia" id="leukemia" />
           <span>Leukemia</span>
         </div>
         <div class="questions">
-          <input class="checkbox" type="checkbox" name="" id="" />
+          <input class="checkbox" type="checkbox" name="psoriasis" id="psoriasis" />
           <span>Psoriasis</span>
         </div>
         <div class="questions">
-          <input class="checkbox" type="checkbox" name="" id="" />
+          <input class="checkbox" type="checkbox" name="angina" id="angina" />
           <span>Angina</span>
         </div>
         <div class="questions">
-          <input class="checkbox" type="checkbox" name="" id="" />
+          <input class="checkbox" type="checkbox" name="stroke" id="stroke" />
           <span>Stroke</span>
         </div>
         <div class="questions">
-          <input class="checkbox" type="checkbox" name="" id="" />
+          <input class="checkbox" type="checkbox" name="anemia" id="anemia" />
           <span>Anemia</span>
         </div>
       <hr>
@@ -110,7 +111,7 @@
         </div>
     
         <div class="flex align-center">
-          <a><button class="assessment-button">Submit</button></a>
+          <a><button class="assessment-button" onclick="addMedicalHistory()">Submit</button></a>
         </div>
       </div>
     </div>

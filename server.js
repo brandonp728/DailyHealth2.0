@@ -39,7 +39,7 @@ app.post('/login', (request, response) => {
   const db = check(user, pass).then(arr => {
 
     const auxResponse = aux.pop();
-    console.log("status: "+auxResponse.status)
+    console.log("status: "+auxResponse.status);
     console.log("userId "+ auxResponse.userId);
     response.json({
       status: auxResponse.status,
@@ -111,6 +111,19 @@ app.post('/notification', (request, response) => {
   });
 });
 
+app.post('/medical', (request, response) => {
+  const data = request.body;
+  const userId = data["userId"];
+  const medicalHistory = data['medicalHistory'];
+  const other = data["other"];
+
+  const history = addMedicalHistory(userId, medicalHistory, other).then(arr=>{
+    response.json({
+    status: true
+    })
+  });
+});
+
 const dbcredentials = {
   host: 'dailyhealthdb.ccmgc85klflk.us-east-1.rds.amazonaws.com',
   user: 'admin',
@@ -139,6 +152,54 @@ async function addactivity(userId, typeofactivity, online, activityId, timeStart
 
 }
 
+
+//MedicalHistory
+// historyId INT
+// userId INT
+// diabetes BOOL 
+// highBloodPressure BOOL
+// highCholesterol BOOL
+// hypothyroidism BOOL
+// cancer BOOL
+// epilepsy BOOL
+// asthma BOOL
+// heartProblems BOOL
+// kidneyDisease BOOL
+// leukemia BOOL
+// psoriasis BOOL
+// angina BOOL
+// stroke BOOL
+// anemia BOOL 
+// other varchar(500)
+async function addMedicalHistory(userId, medicalHistory, other) {
+  let conn;
+  console.log(medicalHistory);
+  const diabetes = medicalHistory["diabetes"];
+  const bloodPressure = medicalHistory["high_blood_pressure"];
+  const cholesterol = medicalHistory["high_cholesterol"];
+  const hypothyroidism = medicalHistory["hypothyroidism"];
+  const cancer = medicalHistory["cancer"];
+  const epilepsy = medicalHistory["epilepsy"];
+  const asthma = medicalHistory["asthma"];
+  const heartProblems = medicalHistory["heart_problems"];
+  const kidneyDisease = medicalHistory["kidney_disease"];
+  const leukemia = medicalHistory["leukemia"];
+  const psoriasis = medicalHistory["psoriasis"];
+  const angina = medicalHistory["angina"];
+  const stroke = medicalHistory["stroke"];
+  const anemia = medicalHistory["anemia"];
+  try {
+    conn = await pool.getConnection();
+    const res = await conn.query("INSERT INTO MedicalHistory (userId, diabetes, highBloodPressure, highCholesterol, hypothyroidism, cancer, epilepsy, asthma, heartProblems, kidneyDisease, leukemia, psoriasis, angina, stroke, anemia, other) value (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [parseInt(userId), diabetes, bloodPressure, cholesterol, hypothyroidism, cancer, epilepsy, asthma, heartProblems, kidneyDisease, leukemia, psoriasis, angina, stroke, anemia, other]);
+    console.log(res);
+  } catch(err) {
+    console.log(err);
+    throw err;
+  } finally {
+    if (conn) return conn.end();
+  }
+}
+
 async function assessment(user, date, hasSymptoms, listSymtoms){
   let conn;
   try {
@@ -160,11 +221,7 @@ async function assessment(user, date, hasSymptoms, listSymtoms){
 
 }
 
-
-
-
 const check = async function login(user, pass) {
-  
   //working login
   let conn;
   try {
