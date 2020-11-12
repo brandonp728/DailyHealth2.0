@@ -122,6 +122,8 @@ async function addMedicalHistory() {
 
 //////////////////////////////////////////////////////////////////////////
 
+
+
 //////////////////////////////create notifications////////////////////////
 
 function createNotification(){
@@ -148,6 +150,64 @@ function createNotification(){
   };
 
   fetch('/notification', options);
+
+
+}
+
+async function getnotification(){
+  // console.log("in getNotification")
+  const credential ={
+    userId: localStorage.getItem("userId")
+    
+  }
+
+  const options = {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(credential)
+  };
+
+  const resp = await fetch('/getnotification', options);
+  
+  const callback = await resp.json();
+  // console.log("in callback: "+callback.status);
+  // console.log("ans: "+callback.body);
+  // let len = callback.body.length;
+  // console.log(len);
+  let msj ="";
+    // len=0;
+
+    try {
+      if (typeof callback.body[0].userId !== "undefined") {
+        let len = callback.body.length;
+        for(let i=0; i<len; i++){
+          msj= msj+"Someone at the activity '"+callback.body[i].activityId+"' have presented suspicious symptoms on "+callback.body[i].timeDate+". \n\n";
+        }
+        msj = msj + "\nIf you present any symptoms report it immediately. \n";
+        
+      }
+    } catch (err) {
+      // noti.push(result);
+      msj="You have 0 notifications";
+ 
+    }
+
+  // if(len>0){
+    
+  //   for(let i=0; i<len; i++){
+  //     msj= msj+"Someone at the activity '"+callback.body[i].activityId+"' have presented suspicious symptoms on "+callback.body[i].timeDate+". \n\n";
+  //   }
+  //   msj = msj + "\nIf you present any symptoms report it immediately. \n";
+  //   // console.log(msj);
+  // }else{
+  //    msj="You have 0 notifications";
+  // }
+
+  document.getElementById("notiId").value = msj;
+  
+
 
 
 }
@@ -287,6 +347,7 @@ function sendActivity(credential){
 var user;
 var pass;
 async function myFunction() {
+  console.log("hey");
   user = document.getElementById("username").value;
  
   pass = document.getElementById("password").value;
